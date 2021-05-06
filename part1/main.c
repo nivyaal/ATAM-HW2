@@ -3,8 +3,8 @@
 
 /* Parameters M,N,R,P can change from one test to another */
 #define M 3
-#define N 4
-#define R 2
+#define N 3
+#define R 1
 #define P 5
 
 
@@ -41,17 +41,16 @@ void multiplyMatrices(int* first, int* second, int* result, int m, int n, int r,
 
 /* The main function is also test zone. Go wild while testing */
 int main() {
-  int matrix1[M][N] = { {1,2,3,1},
-		       {4,0,1,1},
-		       {2,3,4,1} };
-  int matrix2[N][R] = { {1,1},
-		       {0,1},
-		       {0,0},
-		       {1,1} };
-  int result[M][R] = { {0,0},
-		       {0,0},
-		       {0,0} };
-  printf("Element (1,1) in matrix1 is: %d\n", get_elemnt_from_matrix((int*)matrix1,N,1,1));
+  int matrix1[M][N] = { {2},
+		       {2},
+		       {2} };
+  int matrix2[N][R] = {{2}};
+  int result[M][R] = { {0},
+		       {0},
+		       {0} };
+  //printf("Element (1,1) in matrix1 is: %d\n", get_elemnt_from_matrix((int*)matrix1,N,1,1));
+   // printf("Element (0,0) in matrix1 is: %d\n", get_elemnt_from_matrix((int*)matrix1,N,0,0));
+    //printf("Element (2,3) in matrix1 is: %d\n", get_elemnt_from_matrix((int*)matrix1,N,2,3));
   multiplyMatrices((int*)matrix1, (int*)matrix2, (int*)result, M, N, R, P);
   print_result_matrix(result);
   return 0;
