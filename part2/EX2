@@ -1,9 +1,10 @@
-.globl my_ili_handler
+.globl main
 
 .text
 .align 4, 0x90
-my_ili_handler:
+main:
 	#prologue
+        pushq $0x27
 	pushq %rdi
 	pushq %r8
 	#check whats the opcode length
@@ -27,11 +28,14 @@ function:
 case_zero:
 	popq %r8
 	popq %rdi
-	jmp old_ili_handler
+	jmp what_to_do
 case_not_zero:
 	add %r8,16(%rsp)
 	popq %r8
 	popq %rdi
   	iretq 
 
-    
+
+what_to_do:
+    ret
+   

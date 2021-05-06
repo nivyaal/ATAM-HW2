@@ -1,0 +1,16 @@
+.text
+.global main
+main:
+    # write your code here
+ 
+        mov $0x12345678,%rdi
+    	pushq %rdi
+	pushq %r8
+    	movq 8(%rsp),%rax
+	and $0XFF00,%rax
+	cmp $0x0F00,%rax
+	je len2
+        mov %eax,%eax
+len2:
+    xorq  %rax, %rax
+    ret

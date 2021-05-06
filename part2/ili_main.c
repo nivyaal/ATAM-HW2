@@ -70,11 +70,13 @@ int __init init_ko(void){
 	my_set_gate_offset(&new_idt[INVALID_OPCODE], (unsigned long)my_ili_handler);
 	sprintf(message, "new offset: %p", (void*)my_get_gate_offset(&new_idt[INVALID_OPCODE]));
 	print(message);
+	sprintf(message,"func address is : %p", my_ili_handler);
+	print(message);
 	
 	
 	// Swap to the new IDTR
 	my_load_idt(&new_idtr);
-
+	
 	return 0;
 }
 
