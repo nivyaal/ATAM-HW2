@@ -34,7 +34,7 @@ void print(char *str) {
 unsigned int what_to_do(unsigned char magic) {
 	/* This is not the greatest function in the world, no.
 	   This is just a tribute. */
-	return magic-4;
+	return 20;
 }
 
 
