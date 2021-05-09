@@ -15,5 +15,6 @@ _start:
 
   .short 0x040f #ILLEGAL (and remember little endian when you read it)
 
+  shr $8,%rdi
   movq $60, %rax
   syscall
