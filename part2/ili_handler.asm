@@ -5,7 +5,9 @@
 my_ili_handler:
 #prologue
    #just for testing
-  pushq %r8
+   mov 0(%rsp),%rdi
+   add $0x1,0(%rsp)
+  /*pushq %r8
   pushq %rax
 #checking what opcode length
   movq $0xF00,%rax
@@ -18,11 +20,12 @@ len2:
   movq $2, %r8
 function:
 #calling what_to_do with last byte of opcode
-  movq $0xFF, %rdi
-  andq 16(%rsp),  %rdi
+  #movq $0xFF, %rdi
+  #andq 16(%rsp),  %rdi
+  movq 16(%rsp),%rdi
   #call what_to_do
-  mov %rdi,%rax
 #cases in accordence to function return value
+  mov %rdi,%rax # temporary for test!
   cmp $0, %eax
   jne case_not_zero 
 case_zero:
@@ -30,9 +33,10 @@ case_zero:
    popq %r8
    jmp old_ili_handler
 case_not_zero:
+   mov %rax,%rdi
    add %r8,16(%rsp)
    popq %rax
-   popq %r8
+   popq %r8*/
    iretq
    
   
