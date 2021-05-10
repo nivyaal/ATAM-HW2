@@ -1,4 +1,6 @@
 #!/bin/bash
+rm -r-f bad
+mkdir bad
 for (( i=1; i <=22 ; i++ ))
 do
   as asms/bad_inst_$i.asm -o asms/bad_inst_$i.out

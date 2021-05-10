@@ -1,20 +1,20 @@
 #! /bin/bash
 
+insmod ili.ko
 cd bad
 rm output result
 touch output result
-for (( i=1; i <=100; i++ ))
+for (( i=1; i <=22; i++ ))
 do
-	echo "test $i:\n" > output
-	./bad_inst_$i >> output
-	echo "\nreturn value: " >>output
-	val = $?
-	echo $val>>output
-	diff -a ouput bad_inst_$i.out > /dev/null 2>&1
-	if [ $? -eq 0 ]
+	./bad_inst_$i > output
+	val=$?
+	echo $val >> output
+	diff -a output bad_inst_$i.out
+	if [[ $? -eq 0 ]]
 	then
-		echo "test $i: pass\n"
+		echo -e "test ${i}: pass"
 	else
-		echo "test $i: failed!!! - return value: $val\n"
+		echo "test ${i}: failed!!! - return value: "
+		echo $val
 	fi		
 done

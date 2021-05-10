@@ -1,6 +1,6 @@
 #! /bin/bash
 
-./compile
+./compile.sh
 sleep 3
-./start
+./start.sh
 
