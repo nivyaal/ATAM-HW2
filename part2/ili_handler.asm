@@ -8,8 +8,7 @@ my_ili_handler:
   pushq %rax
 #rdi holding the illegal command
   movq 16(%rsp), %rdi
-  #movq (%rdi),%rdi
-  
+  movq (%rdi),%rdi
 #checking what opcode length
   cmp $0x0F,%dil
   je len2
@@ -21,7 +20,6 @@ len2:
   shrq $8, %rdi
 function:
 #calling what_to_do with last byte of opcode
-
   andq $0xFF,  %rdi
   call what_to_do
 #cases in accordence to function return value
@@ -33,10 +31,10 @@ case_zero:
   jmp *old_ili_handler
 case_not_zero:
   # mov %rax,%rdi
+   mov %rax,%rdi
    add %r8,16(%rsp)
    popq %rax
    popq %r8
-   mov $5,%rdi
  iretq
  
    
